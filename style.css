@@ -7,12 +7,13 @@ body {
   background-size: cover;
   background-position: center;
   font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .container {
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 10px;
 }
 
 h1,
@@ -76,7 +77,7 @@ img {
   font-size: 24px;
   line-height: 29px;
   color: #000;
-  transition: 0.2s;
+  transition: 0.4s;
 }
 .header .nav ul li a:hover {
   color: #1a00dc;
@@ -85,8 +86,17 @@ img {
   padding: 88px 0;
   display: flex;
   justify-content: space-between;
-  gap: 110px;
   align-items: center;
+  gap: 80px;
+}
+.header .header__content .img {
+  flex: 0 1 40%;
+  margin: 0 auto;
+}
+.header .header__content .title {
+  word-wrap: break-word;
+  flex: 0 1 auto;
+  margin: 0 auto;
 }
 .header .header__content .title .name {
   margin-bottom: 60px;
@@ -100,8 +110,10 @@ img {
 }
 .header .header__content .title .name h1 span {
   color: #1e00ff;
+  font-weight: 800;
 }
 .header .header__content .title .name p {
+  font-weight: 600;
   font-size: 30px;
   line-height: 129.52%;
   letter-spacing: 0.065em;
@@ -110,14 +122,16 @@ img {
 .header .header__content .title .contacts {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+  row-gap: 25px;
 }
 .header .header__content .title .contacts a {
   color: #000;
   display: flex;
   gap: 22px;
   align-items: center;
-  transition: 0.2s;
+  transition: 0.4s;
 }
 .header .header__content .title .contacts a:hover {
   transform: scale(1.05);
@@ -146,13 +160,13 @@ img {
   position: relative;
 }
 .portfolio .item .img::after {
-  content: "Рабочий сайт";
+  content: "";
   position: absolute;
   bottom: 0%;
   left: 0%;
   width: 100%;
   height: 0;
-  transition: 0.2s;
+  transition: 0.4s;
   background: rgba(0, 0, 0, 0.7);
   z-index: 100;
   color: #fff;
@@ -162,7 +176,12 @@ img {
   justify-content: center;
   align-items: center;
 }
-.portfolio .item .img:hover::after {
+.portfolio .item .img.done:hover::after {
+  content: "Рабочий сайт";
+  height: 100%;
+}
+.portfolio .item .img.test:hover::after {
+  content: "Тестовый сайт";
   height: 100%;
 }
 .portfolio .item .name {
@@ -182,13 +201,15 @@ img {
 .instruments .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
   row-gap: 35px;
 }
 .instruments .wrapper .item {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+.instruments .wrapper .item .icon {
+  flex-shrink: 0;
 }
 .instruments .wrapper .item .name {
   font-weight: 500;
@@ -197,7 +218,8 @@ img {
 }
 .instruments .wrapper .item .scale {
   position: relative;
-  width: 230px;
+  max-width: 230px;
+  width: 100%;
   height: 15px;
   background: #dcdcdc;
   border-radius: 50px;
@@ -216,10 +238,10 @@ img {
   line-height: 22px;
 }
 .instruments .wrapper .item .css::after {
-  width: 90%;
+  width: 80%;
 }
 .instruments .wrapper .item .scss::after {
-  width: 95%;
+  width: 70%;
 }
 .instruments .wrapper .item .js::after {
   width: 50%;
@@ -260,7 +282,6 @@ img {
   line-height: 29px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   gap: 22px;
 }
@@ -312,7 +333,12 @@ img {
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
-  padding: 23px 135px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 411px;
+  height: 76px;
+  width: 100%;
   color: #fff;
   font-weight: 600;
   font-size: 26px;
@@ -326,4 +352,79 @@ img {
 .callback form button:active {
   transform: scale(0.97);
   background: linear-gradient(0deg, #72a6ff 0%, #3c22ff 100%);
+}
+
+@media (max-width: 1023px) {
+  .container {
+    max-width: 960px;
+  }
+  .instruments .wrapper {
+    grid-template-columns: 1fr;
+  }
+  .header__content {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .header__content .img {
+    flex: 1 1 100% !important;
+  }
+  .quote {
+    max-width: 100%;
+  }
+}
+@media (max-width: 642px) {
+  .nav {
+    justify-content: start !important;
+  }
+  .nav ul {
+    flex-direction: column;
+    -moz-column-gap: 40px !important;
+         column-gap: 40px !important;
+  }
+  .nav ul li a {
+    font-size: 24px !important;
+  }
+  .header__content .contacts {
+    grid-template-columns: 1fr !important;
+  }
+  .header__content .contacts a {
+    margin-left: 20%;
+  }
+  .benefits .wrapper {
+    grid-template-columns: 1fr;
+  }
+  .callback h2,
+.callback form {
+    max-width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .instruments .wrapper .item .name {
+    font-size: 18px;
+  }
+}
+@media (max-width: 425px) {
+  .instruments .wrapper .item {
+    display: grid !important;
+  }
+  .instruments .wrapper .item .icon {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .instruments .wrapper .item .name {
+    grid-column: 2/4;
+    grid-row: 1/2;
+  }
+  .instruments .wrapper .item .scale {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    grid: 1/3, 2/3;
+  }
+  .instruments .wrapper .item .percent {
+    grid-column: 3/4;
+    grid-row: 2/3;
+  }
+  .header__content .contacts a {
+    margin-left: 0%;
+  }
 }/*# sourceMappingURL=style.css.map */
